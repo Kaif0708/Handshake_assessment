@@ -32,8 +32,7 @@ The agent is given a web server access log at `/app/data/access.log` in the stan
 ## Directory Structure
 
 ```
-log-report/
-├── README.md                  ← This file
+log-report                 
 ├── task.toml                  ← Task manifest (metadata, resource limits, artifact paths)
 ├── instruction.md             ← Agent-facing task instructions
 ├── environment/
