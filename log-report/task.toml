@@ -1,0 +1,32 @@
+artifacts = ["/app/report.json"]
+
+[task]
+name = "dynamo/log-report"
+description = "Parse an HTTP access log file and aggregate total requests and error rates into a structured JSON report."
+
+[metadata]
+category = "data_processing"
+subcategory = "log_parsing"
+task_objective = ["generate_json_report"]
+artifact_type = ["json"]
+expert_time_estimate_hours = 0.5
+model_tested = "GPT-5.4"
+agent_tested = "Terminus-2"
+difficulty_explanation = "Requires parsing unstructured text with log patterns, extracting HTTP status codes, and structuring numeric metrics accurately into a JSON format."
+solution_explanation = "The solution script processes /app/data/access.log line-by-line, tallies total lines for request counts, calculates the proportion of 4xx and 5xx errors, and outputs the result to /app/report.json."
+verification_explanation = "Executes a standalone pytest suite that explicitly verifies the existence, parsing integrity, required keys, and target metric accuracy within the generated JSON report."
+
+[verifier]
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 120.0
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []
